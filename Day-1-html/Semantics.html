@@ -47,8 +47,16 @@
                             handheld - "手持设备"（小屏幕、有限的带宽）
                             ...
                         属性
-                            width/height - 目标显示区域的宽高（可使用min-和max-前缀）
-                                例：
+                            width/height                                 - 目标显示区域的宽高（可使用min-和max-前缀）
+                                例：media = "screen and (max-height: 100px)"
+                            device-width/device-height          - 目标显示器/纸张的宽高（可使用min-和max-前缀）
+                                例：media = "screen and (max-device-height: 100px)"
+                            orientation                                    - 目标显示器/纸张的方向（portrait/landscape）
+                            aspect-ratio                                  - 目标显示区域的宽度/高度比（可使用min-和max-前缀）
+                            device-aspect-ratio                       - 目标显示器/纸张的 device-width/device-height 比率（可使用min-和max-前缀）
+                            color、color-index、monochrome、resolution、scan、grid
+                    rel - 
+
                 script - 
                 style - 
     -->
