@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--
+        默认地址或默认目标 - base
+            为页面上的所有链接规定默认地址或默认目标
+            最多一个
+    -->
+    <base href="http://www.w3school.com.cn" target="_blank">
+
+    <meta charset="UTF-8">
+    <title>HTML 语义化</title>
+
+    <!--
+        为什么要语义化？
+            1.SEO
+            2.更容易让屏幕阅读器读出网页内容
+            3.去掉或样式丢失的时候能让页面呈现清晰的结构
+            4.便于团队开发和维护
+        如何做到语义化？
+            1.理解HTML标签
+            2.在合适的位置、需求下
+    -->
+
+    <!--
+        头部元素容器 - head（必需）
+            "头部元素"
+                meta - 
+                title - 文档标题（必需）
+                    1.定义浏览器工具栏中的标题
+                    2.提供页面被添加到收藏夹时的标题
+                    3.显示在搜索引擎结果中的页面标题 "SEO"
+                base - 默认地址或默认目标（最多一个）
+                link - 定义文档与外部资源之间的关系
+                    href
+                    hreflang
+                    media - 链接文档将被显示到什么设备上
+                        规定目前资源是为何种媒介/设备优化的
+                        多数情况为不同媒介类型规定不同样式的 CSS 样式表（接受多值）
+                        操作
+                            and not , - AND NOT OR
+                        设备
+                            all（默认）
+                            screen - 计算机屏幕
+                            print - 打印
+                            handheld - "手持设备"（小屏幕、有限的带宽）
+                            ...
+                        属性
+                            width/height - 目标显示区域的宽高（可使用min-和max-前缀）
+                                例：
+                script - 
+                style - 
+    -->
+    <link rel="stylesheet" type="text/css" href="/example/html5/demo_media_screen.css"/>
+    <link rel="stylesheet" type="text/css" href="/example/html5/demo_media_print.css" media="print" />
+
+</head>
+<body>
+
+    <!--
+        超链接 - a
+            html4：标签既可以是超链接，也可以是锚。这取决于是否描述了 href 属性
+            html5：超链接，但是假如没有 href 属性，它仅仅是超链接的一个占位符
+        提示：
+            1.如果没有使用 href 属性，则不能使用 hreflang, media, ping, rel, target 以及 type 属性
+        属性：
+            href
+            hreflang - 规定目标URL的基准语言 - "多语言建站"
+            media - H5
+                规定目标 URL 是为什么类型的媒介/设备进行优化的。
+                用于规定目标 URL 是为特殊设备（比如 iPhone）、语音或打印媒介设计的（可为多个）
+                默认值：all
+            rel - 规定当前文档与目标 URL 之间的关系
+            target - 在何处打开被链接文档
+            type - H5
+                规定目标 URL 的 MIME 类型
+                MIME = Multipurpose Internet Mail Extensions = 多功能因特网邮件扩展
+                    原来是用来判断电子邮件附件的格式而设计的一个字符串，后来演变为网络文档，及企业网和Internet上的其他应用程序中的文件格式的规范
+                    MIME类型是由一个媒体类型和一个子类型组成。媒体类型和子类型用一个斜杠（/）分隔开，例如text/css，它会告诉浏览器文件是纯文本文件，也是一个CSS样式表
+    -->
+    <a href="http://www.baidu.com" hreflang="zh" media="all" rel="" target="_blank">超链接</a>
+
+    <!--
+        缩写形式 - abbr
+    -->
+    <abbr title="watermelon">wml</abbr>
+
+    <!--
+        地址 - address
+            如果 <address> 元素位于 <article> 元素内部，则它表示该文章作者或拥有者的联系信息
+    -->
+    <address>
+        <a href="http://453692541@qq.com">Email me</a>
+        <br/>
+        定义文档作者或拥有者的联系信息
+    </address>
+
+    <!--
+        图像 - img
+        alt - 图像的替代文本
+        src - 图像url - "可跨源"
+        width/height - px/%
+        "图像映射"指的是带有可点击区域的图像
+            ismap - 把图像设置为服务器端图像映射
+                当点击一个服务器端图像映射时，点击坐标会以 URL 查询字符串的形式发送到服务器
+            usemap - 把图像设置为客户端图像映射
+                与 map 元素的 name 或 id 属性相关联，它建立了图像与映射之间的关系
+                    定义图形映射 - map
+                    定义图像映射内部的区域 - area
+    -->
+    <h3>客户端图像映射</h3>
+    <img src="/i/eg_planets.jpg" alt="Planets" usemap="#planetmap"/>
+    <map name="planetmap" id="planetmap">
+       <area shape="rect" coords="0,0,110,260" href="/example/html/sun.html" alt="Sun"/>
+       <area shape="circle" coords="129,161,10" href="/example/html/mercur.html" alt="Mercury"/>
+       <area shape="circle" coords="180,139,14" href="/example/html/venus.html" alt="Venus"/>
+   </map>
+
+    <h3>服务端图像映射</h3>
+    <a href="/example/html5/demo_form.asp">
+        <img src="/i/eg_tulip.jpg" ismap="ismap" width="400" height="266" alt="郁金香"/>
+    </a>
+
+    <!--
+        独立内容 - article - H5
+            内容独立于文档的其余部分
+            相对div更加语义化
+            div不带语义，适合用来布局
+    -->
+    <article style="border: 3px dotted #A3A3A3">
+        <h4>hello melon~</h4>
+        <p>balabalabala~ balabalabala~ balabalabala~</p>
+    </article>
+
+    <!-- 
+        所处内容之外的内容 - aside - H5
+            内容应该与附近的内容相关
+            相对div更加语义化
+     -->
+
+     <!--
+        声音 - audio
+
+     -->
+    <audio src="/i/horse.ogg">
+        您的浏览器不支持 audio 标签。
+    </audio>
+
+    <!--
+        双向标记（"浏览器支持不完全"）
+            bdi - "bidi隔离" - H5
+                允许您设置一段文本，使其脱离其父元素的文本方向设置
+                "发布用户评论或其他您无法完全控制的内容时，很有用"
+                "Unicode双向算法"：处理双向文字（文字的阅读顺序）的算法，
+
+            bdo
+                覆盖默认的文本方向（显示）
+    -->
+
+    <!--
+        选项列表 - datalist（不能随意受css控制且必须配合input使用，"鸡肋"）
+            配合input标签的list属性使用，list值对应datalist的id
+    -->
+    <input list="cars" />
+    <datalist id="cars">
+        <option value="BMW">
+        <option value="Ford">
+        <option value="Volvo">
+    </datalist>
+
+    <!--
+        定义列表 dl-dt-dd
+            dl
+                定义列表（definition list）
+            dt
+                定义列表中的项目
+            dd
+                定义列表中对项目的描述
+    -->
+    <dl>
+        <dt>Coffee</dt>
+        <dd>Black hot drink</dd>
+        <dt>Milk</dt>
+        <dd>White cold drink</dd>
+    </dl>
+
+    <!--
+        短语元素
+            em         - 被强调的文本
+            strong   - 重要的文本
+            dfn        - 定义项目
+            code      - 计算机代码文本
+            samp      - 样式文本
+            kbd        - 键盘文本
+            var         - 变量
+            cite        - 引用
+    -->
+    <em>强调的文本</em>
+    <strong>重要的文本</strong>
+    <dfn>定义项目</dfn>
+    <code>计算机代码文本</code>
+    <samp>ae</samp> <!-- 在 HTML 中，用于 "ae" 连字的特殊实体是 "&aelig;"，大多数浏览器都会将它转换成相应的 "æ" 连字字符 -->
+    <kbd>键盘文本</kbd>
+    <var>变量</var>
+    <cite>引用</cite>
+
+    <!--
+        嵌入的内容 - embed - H5
+            定义嵌入的内容，比如插件
+            width/height
+            src - 嵌入内容的url
+            type - 嵌入内容的MIME类型
+    -->
+    <embed src="/i/helloworld.swf"  type="application/x-shockwave-flash" />
+
+    <!--
+        表单 - form
+            用于创建供用户输入的 HTML 表单，包含一个或多个表单元素
+            accept-charset - 规定服务器可处理的表单数据字符集
+            action - url
+            autocomplete - 是否开启表单"自动完成功能"（允许浏览器预测对字段的输入。当用户在字段开始键入时，浏览器基于之前键入过的值，应该显示出在字段中填写的选项） - H5
+                该属性还适用于<input> 类型：text, search, url, telephone, email, password, datepickers, range 以及 color
+            enctype - 规定在发送表单数据之前如何对其进行编码
+                application/json                                              - 序列化后的JSON字符串
+                （默认）application/x-www-form-urlencoded - 对所有字符进行url编码
+                multipart/form-data                                      - "文件上传"
+                text/plain                                                       - 纯文本格式，不进行编码
+            method - get/post
+            name - 表单名称
+            novalidate - 若设置，则不对表单进行校验
+            target - 在何处打开action url（framename值对应iframe）
+
+            相关元素
+                组合元素 - fieldset
+                    从逻辑上将表单中的元素组合起来，会在相关表单元素周围绘制边框
+                标题元素 - legend
+                    还可以为<figure>、<details>定义标题
+
+                "表单元素"
+                    button
+                    input
+                    keygen
+                    object
+                    output
+                    select
+                    textarea
+    -->
+    <form style="border: 2px solid #000; margin-bottom: 10px;">
+        <fieldset>
+            <legend>个人信息：</legend>
+            姓名：<input type="text" />
+            <br />
+            邮箱：<input type="text" />
+            <br />
+            出生日期： <input type="text" />
+        </fieldset>
+    </form>
+
+    <!--
+        独立的流内容 - figure - H5
+            规定独立的流内容（图像、图表、照片、代码等）
+            figure 元素的内容应该与主内容相关
+            figcaption - 定义figure元素的标题（常被置于第一个或最后一个子元素）- H5
+    -->
+    <p>
+        上海卢浦大桥是当今世界第一钢结构拱桥，是世界上跨度最大的拱形桥。它也是世界上首座完全采用焊接工艺连接的大型拱桥（除合拢接口采用栓接外），现场焊接焊缝总长度达4万多米，接近上海市内环高架路的总长度。卢浦大桥像澳大利亚悉尼的海湾大桥一样具有旅游观光的功能。
+    </p>
+    <figure>
+        <figcaption>黄浦江上的的卢浦大桥</figcaption>
+        <p>拍摄者：W3School 项目组，拍摄时间：2010 年 10 月</p>
+        <img src="/i/shanghai_lupu_bridge.jpg" width="350" height="234" />
+    </figure>
+
+    <!--
+        页脚 - footer
+            定义 section 或 document 的页脚
+            "带有语义的div"
+    -->
+    <footer>
+        <p>Posted by: Hege Refsnes</p>
+        <p>
+            Contact information: 
+            <a href="mailto:someone@example.com">someone@example.com</a>
+        </p>
+        <address>浠水县实验小学</address>
+    </footer>
+
+</body>
+</html>

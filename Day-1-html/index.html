@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" alt=""/>
+
+</body>
+    <script type="text/javascript">
+        /*
+                0.实现跨域的标签
+                    img
+                    iframe
+                    script(jsonp)
+                    link(background)
+                1.同源策略:协议相同、域名相同、端口相同
+                2.浏览器不同的域名不能访问对应的cookie，但内部的表单没有限制
+                3.同源策略限制的对象
+                    1）cookie、localStorage、indexDB无法读取
+                    2）DOM无法获得
+                    3）Ajax请求不能发送
+                4.设置同源策略
+                    脚本设置
+                        1）设置hosts
+                        2）document.domain = 'example.com'
+                    后台设置
+                        在设置cookie时，指定其一级域名
+                            Set-Cookie:key=value;domain=.example.com;path=/
+                5.跨域的解决方案
+                    1）jsonp原理 *
+                    2）img - 可使用img跨域性质，获取网络速度 *
+         */
+    </script>
+</html>
