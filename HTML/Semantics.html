@@ -25,15 +25,17 @@
 
     <!--
         头部元素容器 - head（必需）
-            案例：谷歌翻译、京东金融、百度、京东商城、今日头条、支付宝、淘宝
+            ！！！案例：谷歌翻译、京东金融、百度、京东商城、今日头条、支付宝、美团、天猫/淘宝
             "头部元素"
                 title - 文档标题（必需）
                     1.定义浏览器工具栏中的标题
                     2.提供页面被添加到收藏夹时的标题
                     3.显示在搜索引擎结果中的页面标题 "SEO"
                     案例在此元素时均无特殊性！
+
                 base - 默认地址或默认目标（最多一个）
                     案例均未使用该元素！ - 通常网站都有较多外部资源
+
                 link - 定义文档与外部资源之间的关系
                     href
                     hreflang
@@ -66,11 +68,15 @@
                                 不同
                                     "shortcut icon"是必须的，因为该字符串被多数遵守标准的浏览器识别为列出可能的关键词（IE将其作为一个单独的名称），所有的浏览器都可以理解此代码
                                     "icon"，当希望为新浏览器提供另一种备用图像（如GIF）时，才必须使用
+                        apple-touch-icon                                                            - 类似favicon.ico，在Apple上，创建快捷方式用到的图标
+                            <link rel="apple-touch-icon" href="//gw.alicdn.com/tfs/TB1m9hGhXOWBuNjy0FiXXXFxVXa-152-152.jpg"> - 来自天猫
                         apple-touch-icon/apple-touch-icon-precomposed           - 增加一层透明高光层的图标 / 设计原图图标（在iPhone/iPad等苹果移动设备上，可以把网站"添加至主屏幕"时使用的图标）
                             <link rel="apple-touch-icon-precomposed" href="https://gss0.bdstatic.com/5bd1bjqh_Q23odCf/static/wiseindex/img/screen_icon_new.png"> - 来自百度搜索
+                        apple-touch-startup-image                                            - APP启动画面图片
+                            <link rel="apple-touch-startup-image" href="//ms0.meituan.net/touch/img/startup/apple-touch-startup-image-640x920.png" media="(device-height:480px)"> - 来着美团
                         canonical                                            - 为了解决网站由于网站url链接不一样但网页内容是一样而造成百度重复收录的问题
                             <link rel="canonical" href="https://www.alipay.com/"> - 来自支付宝
-                                该href为主站
+                                该href指向的为主站
                         manifest                                            - 缓存"manifest.json"文件
                             <link rel="manifest" href="./manifest.json"> - 来自淘宝
                             "manifest.json"是干啥的？
@@ -86,7 +92,78 @@
                     title - 搜索引擎名称
                         <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml?hl=zh-CN" title="Google 翻译"> - 来自谷歌翻译
                         
-                meta - 
+                meta - 元信息，与页面相关
+                    charset - 定义字符编码
+                    content - 定义与 http-equiv 或 name 属性相关的元信息
+                        "text/html; charset=UTF-8"                                           - 内容类型及编码
+                    http-equiv - 把 content 属性关联到 HTTP 头部
+                        refresh                                                                           - content为刷新页面时间间隔（秒）
+                        content-type                                                                   - 对应Response Headers的content-type
+                        Expires                                                                            - 对应Response Headers的expires
+                            content为页面在缓存中的过期时间
+                                若为指定时间，必须为GMT时间格式
+                                若为时间段，描述时间字符串
+                                若为-1，任何时间都不被缓存！
+                        Cache-Control                                                                  - 缓存控制
+                            content="no-cache" - 指示请求或响应消息不能缓存（HTTP/1.0用Pragma的no-cache替换）
+                        Pragma                                                                             - ？
+                            content="no-cache" - 设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出
+                        x-dns-prefetch-control                                                   - 浏览器的 DNS 预读取功能
+                            <meta http-equiv="x-dns-prefetch-control" content="on"> - 来自百度
+                                当前页面要做DNS预解析
+                    name - 把 content 属性关联到一个名称
+                        viewport！！！                                                                - 视口（移动端）
+                            <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+                                1.宽度为设备宽度   2.初始缩放比例1.0    3. 最小缩放比例1.0    4.最大缩放比例1.0    5.用户是否可以缩放-不能
+                        author                                                                             - 网站作者
+                            <meta name="author" content="m.jd.com"> - 来自京东
+                        keywords                                                                         - 关键词（将被爬虫抓取，有利于SEO）
+                            <meta name="keywords" content="翻译, 翻译器, 机器翻译, 在线翻译"> - 来自谷歌翻译
+                        description                                                                      - 页面描述
+                            <meta name="description" content="Google 的免费翻译服务可提供简体中文和另外 100 多种语言之间的互译功能，可让您即时翻译字词、短语和网页内容。"> - 来自谷歌翻译
+                        full-screen                                                                      - "强制全屏"（针对UC，还有其他关于强制全屏或横竖屏针对不同浏览器的参数）
+                            <meta name="full-screen" content="yes"> - 来自京东
+                            <meta name="x5-orientation" content="portrait"> - 来自京东
+                                QQ强制竖屏
+                        browsermode                                                                  - 浏览器模式
+                            <meta name="browsermode" content="application"> - 来自京东
+                                UC应用模式
+                            <meta name="x5-page-mode" content="app">
+                                QQ应用模式
+                        applicable-device                                                            - 适合无线浏览的终端
+                            <meta name="applicable-device" content="mobile"> - 来自美团
+                        location                                                                          - 标注本网页所属的地区.给搜索程序搜索的时候用的
+                            <meta name="location" content="province=湖北;city=武汉;coord=114.3162003,30.5810833"> - 来自美团
+                        pathname                                                                        - ？
+                            <meta name="pathname" content="usergrowth_mobile_list"> - 来自今日头条
+                        robots                                                                             - 控制搜索引擎如何抓取和索引页
+                            <meta name="robots" content="noodp"> - 来自谷歌翻译
+                        google                                                                              - 谷歌浏览器定制
+                            <meta name="google" content="notranslate"> - 来自谷歌翻译
+                                关闭chrome浏览器下翻译插件
+                        xxx-site-verification                                                       - xxx站点认证，有利于站点收录，利于SEO
+                        theme-color                                                                     - 选项卡主题颜色（针对谷歌浏览器）
+                            <meta content="#4285F4" name="theme-color"> - 来自谷歌翻译
+                        App-Config                                                                      - ？
+                            <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"> - 来自淘宝
+                        apple-itunes-app                                                              - 网站对应APP
+                            <meta content="app-id=414706506" name="apple-itunes-app"> - 来自谷歌翻译
+                                safari浏览器会在相应页面上显示一个下载banner
+                        apple-mobile-web-app-capable                                         - 是否启用 WebApp 全屏模式
+                        apple-mobile-web-app-status-bar-style                           - 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式，可选default、black、black-translucent
+                        apple-mobile-web-app-title                                              - 添加到主屏后的标题
+                            <meta name="apple-mobile-web-app-title" content="TMALL"> - 来自天猫
+                        format-detection                                                             - 忽略页面中识别
+                            <meta name="format-detection" content="telphone=no, email=no"/> - 忽略手机号和email的识别
+                        referrer                                                                          - 双核浏览器的渲染方式，用于指定双核浏览器默认以何种方式渲染页面
+                            <meta name="referrer" content="always"> - 来自百度
+                                让浏览器总是发送"referer"?
+                        data-spm                                                                         - ？
+                            <meta name="data-spm" content="a215s"> - 来自淘宝
+                        aplus-terminal                                                                 - ？
+                            <meta name="aplus-terminal" content="1"> - 来自天猫
+                        aplus-waiting                                                                   - ？
+                            <meta name="aplus-waiting" content="MAN"> - 来自天猫
                 script - 
                 style - 
     -->
