@@ -25,13 +25,15 @@
 
     <!--
         头部元素容器 - head（必需）
+            案例：谷歌翻译、京东金融、百度、京东商城、今日头条、支付宝、淘宝
             "头部元素"
-                meta - 
                 title - 文档标题（必需）
                     1.定义浏览器工具栏中的标题
                     2.提供页面被添加到收藏夹时的标题
                     3.显示在搜索引擎结果中的页面标题 "SEO"
+                    案例在此元素时均无特殊性！
                 base - 默认地址或默认目标（最多一个）
+                    案例均未使用该元素！ - 通常网站都有较多外部资源
                 link - 定义文档与外部资源之间的关系
                     href
                     hreflang
@@ -55,8 +57,36 @@
                             aspect-ratio                                  - 目标显示区域的宽度/高度比（可使用min-和max-前缀）
                             device-aspect-ratio                       - 目标显示器/纸张的 device-width/device-height 比率（可使用min-和max-前缀）
                             color、color-index、monochrome、resolution、scan、grid
-                    rel - 
-
+                    rel - 当前文档与被链接文档/资源之间的关系
+                        icon                                                    - 外部图标（常用用来替换默认favicon.ico！）
+                            <link rel="icon" href="//www.jd.com/favicon.ico" type="image/x-icon"> - 来自京东金融
+                            <link rel="shortcut icon" href="https://gss0.bdstatic.com/5bd1bjqh_Q23odCf/static/wiseindex/img/favicon64.ico" type="image/x-icon"> - 来自百度搜索
+                                相同
+                                    为了保证favicon的出现
+                                不同
+                                    "shortcut icon"是必须的，因为该字符串被多数遵守标准的浏览器识别为列出可能的关键词（IE将其作为一个单独的名称），所有的浏览器都可以理解此代码
+                                    "icon"，当希望为新浏览器提供另一种备用图像（如GIF）时，才必须使用
+                        apple-touch-icon/apple-touch-icon-precomposed           - 增加一层透明高光层的图标 / 设计原图图标（在iPhone/iPad等苹果移动设备上，可以把网站"添加至主屏幕"时使用的图标）
+                            <link rel="apple-touch-icon-precomposed" href="https://gss0.bdstatic.com/5bd1bjqh_Q23odCf/static/wiseindex/img/screen_icon_new.png"> - 来自百度搜索
+                        canonical                                            - 为了解决网站由于网站url链接不一样但网页内容是一样而造成百度重复收录的问题
+                            <link rel="canonical" href="https://www.alipay.com/"> - 来自支付宝
+                                该href为主站
+                        manifest                                            - 缓存"manifest.json"文件
+                            <link rel="manifest" href="./manifest.json"> - 来自淘宝
+                            "manifest.json"是干啥的？
+                                为了实现 "PWA" 应用添加至桌面功能，除了HTTPS外，还需要准备 manifest.json 文件去配置应用的图标、名称等信息
+                                "PWA"应用是啥？
+                            "manifest"怎么缓存？
+                        search                                                - 用于自定义搜索引擎
+                        prefetch                                            - 规定应该对目标文档进行缓存
+                        stylesheet                                         - 指向要导入的样式表的 URL
+                        dns-prefetch                                     - "DNS预解析"（使用频率很高！！！）
+                    sizes - 被链接资源的尺寸。仅适用于 rel="icon"
+                    type - 被链接资源的MIME类型
+                    title - 搜索引擎名称
+                        <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml?hl=zh-CN" title="Google 翻译"> - 来自谷歌翻译
+                        
+                meta - 
                 script - 
                 style - 
     -->
