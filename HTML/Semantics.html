@@ -92,7 +92,9 @@
                     title - 搜索引擎名称
                         <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml?hl=zh-CN" title="Google 翻译"> - 来自谷歌翻译
                         
-                meta - 元信息，与页面相关
+                meta - 元信息，与页面相关（常用于"SEO"、适配控制、响应HTTP 头部控制）
+                    ！！！"SEO" - 搜索引擎优化 - 相关属性name - (author|keywords|description|location|robots|xxx-site-verification)
+                    ！！！"适配" - 设备适配、浏览器适配、快捷方式适配等 - 相关属性name - (viewport|full-screen|browsermode|applicable-device|theme-color|apple-itunes-app|apple-mobile-web-app-capable|apple-mobile-web-app-status-bar-style|apple-mobile-web-app-title|format-detection)
                     charset - 定义字符编码
                     content - 定义与 http-equiv 或 name 属性相关的元信息
                         "text/html; charset=UTF-8"                                           - 内容类型及编码
@@ -112,7 +114,7 @@
                             <meta http-equiv="x-dns-prefetch-control" content="on"> - 来自百度
                                 当前页面要做DNS预解析
                     name - 把 content 属性关联到一个名称
-                        viewport！！！                                                                - 视口（移动端）
+                        viewport                                                                          - 视口（移动端）
                             <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
                                 1.宽度为设备宽度   2.初始缩放比例1.0    3. 最小缩放比例1.0    4.最大缩放比例1.0    5.用户是否可以缩放-不能
                         author                                                                             - 网站作者
